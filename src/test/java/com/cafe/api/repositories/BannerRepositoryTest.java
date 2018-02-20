@@ -2,6 +2,8 @@ package com.cafe.api.repositories;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,12 +24,13 @@ public class BannerRepositoryTest {
 	private BannerRepository bannerRepository;
 	
 	private static final String IMAGE_PATH = "path/to/image.png";
+	private static final String POSITION = "top";
 	
 	@Before
 	public void setUp() throws Exception {
 		Banner banner = new Banner();
 		banner.setImagePath(IMAGE_PATH);
-		banner.setPosition("main");
+		banner.setPosition(POSITION);
 		this.bannerRepository.save(banner);
 	}
 	
@@ -41,6 +44,13 @@ public class BannerRepositoryTest {
 		Banner banner = this.bannerRepository.findByImagePath(IMAGE_PATH);
 		
 		assertEquals(IMAGE_PATH, banner.getImagePath());
+	}
+	
+	@Test
+	public void testFindByPosition() throws Exception {
+		List<Banner> banners = this.bannerRepository.findByPosition(POSITION);		
+		assertEquals(1, banners.size());
+		assertEquals(POSITION, banners.get(0).getPosition());
 	}
 
 }
