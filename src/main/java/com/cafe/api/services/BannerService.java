@@ -13,7 +13,22 @@ public interface BannerService {
 	 * @param imagePath
 	 * @return Optional<Banner>
 	 */
+	List<Banner> findAll();
+	
+	/**
+	 * Find a banner given image path
+	 * 
+	 * @param imagePath
+	 * @return Optional<Banner>
+	 */
 	Optional<Banner> findByImagePath(String imagePath);
+	
+	/**
+	 * Find banner by id
+	 * @param id
+	 * @return
+	 */
+	Optional<Banner> findOne(Long id);
 
 	/**
 	 * Find all banners with same position

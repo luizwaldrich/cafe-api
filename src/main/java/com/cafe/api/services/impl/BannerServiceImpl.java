@@ -14,16 +14,28 @@ import com.cafe.api.services.BannerService;
 
 @Service
 public class BannerServiceImpl implements BannerService {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(BannerServiceImpl.class);
-	
+
 	@Autowired
 	private BannerRepository bannerRepository;
+	
+	@Override
+	public List<Banner> findAll() {
+		log.info("Searching all banners");
+		return this.bannerRepository.findAll();
+	}
 
 	@Override
 	public Optional<Banner> findByImagePath(String imagePath) {
 		log.info("Searching banner in {}", imagePath);
 		return Optional.ofNullable(bannerRepository.findByImagePath(imagePath));
+	}
+
+	@Override
+	public Optional<Banner> findOne(Long id) {
+		log.info("Searching banner id {}", id);
+		return Optional.ofNullable(bannerRepository.findOne(id));
 	}
 
 	@Override
