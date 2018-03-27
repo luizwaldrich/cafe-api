@@ -15,7 +15,13 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
+	@Override
+	public Optional<Category> findOne(Long id) {
+		Category category = categoryRepository.findOne(id);
+		return Optional.ofNullable(category);
+	}
+
 	@Override
 	public Optional<Category> findByName(String name) {
 		Category category = categoryRepository.findByName(name);

@@ -8,6 +8,14 @@ import com.cafe.api.entities.Category;
 public interface CategoryService {
 
 	/**
+	 * Find a category by id
+	 * 
+	 * @param id
+	 * @return Optional<Category>
+	 */
+	Optional<Category> findOne(Long id);
+	
+	/**
 	 * Find a category by name
 	 * 
 	 * @param name
